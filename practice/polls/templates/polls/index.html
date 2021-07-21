@@ -1,0 +1,15 @@
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <!--<li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>-->
+        <!-- 위 부분은 url 수정이 힘든 하드코딩이므로 polls.urls 모듈의 path()함수에 정의된 이름을 이용-->
+        
+        
+        <!-- 이름 공간 사용후-->
+
+        <li><a href="{% url 'polls:detail' question.id %}">Q{{question.id}}: {{question.question_text}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
